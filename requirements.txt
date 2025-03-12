@@ -1,0 +1,10 @@
+python==3.11
+Django==2.2
+mysqlclient
+djangorestframework  # For REST APIs
+Pillow  # Image processing
+django-cors-headers  # Enable CORS if using frontend
+gunicorn  # Production WSGI server
+
+# Upgrade all installed packages
+pip install --upgrade toolset
