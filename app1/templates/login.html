@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        background-image: url("../static/images/BGIMG.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;  
+    }
+    
+    button {
+        margin-top: 20px;
+        width: 200px;
+        height: 50px;
+        position: relative;
+        background: linear-gradient(45deg, #00ccff, #ff00ff);
+        color: #0a0000;
+        font-size: 24px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: 0.5s;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+    
+    button:hover {
+        letter-spacing: 3px;
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.7), 0 0 40px rgba(0, 255, 255, 0.7);
+    }
+    
+    button::before {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        background: black;
+        border-radius: 8px;
+        z-index: -1;
+    }
+    
+    button span {
+        position: relative;
+        z-index: 1;
+    }
+    
+    button i {
+        position: absolute;
+        inset: 0;
+        display: block;
+    }
+    
+    button i::before, button i::after {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 5px;
+        background: cyan;
+        transition: 0.5s;
+    }
+    
+    button i::before {
+        top: 0;
+        left: 90%;
+        transform: skewX(-45deg);
+    }
+    
+    button:hover i::before {
+        width: 25px;
+        left: 10%;
+    }
+    
+    button i::after {
+        bottom: 0;
+        left: 10%;
+        transform: skewX(45deg);
+    }
+    
+    button:hover i::after {
+        width: 25px;
+        left: 90%;
+    }
+    .form{
+        background:linear-gradient(yellow,rgb(37, 64, 4),rgb(10, 10, 9));
+        padding: 40px; 
+        border-radius: 10px; 
+
+    }
+
+    
+    .bhm{
+        /* background-color: aqua; */  
+        padding: 50px;
+        border-radius: 10px;
+        cursor: pointer;
+        position: relative;
+        top: 50px;
+        left: 50px;
+        color: #fff;
+        z-index: 0;
+    
+    }
+    .bhm::after{
+        content: "";
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg,#fff,yellow);
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-right-style: solid;
+        border-top-style: solid;
+        border-color: black;
+    }
+    .bhm::before{
+        content: "";
+        background: linear-gradient(20deg,#fff,rgb(199, 208, 199));
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        background-size: 600%;
+        z-index: -1;
+        width: calc(100% + 15px);
+        height: calc(100% + 15px);
+        filter: blur(5px);
+        animation: glow 20s linear infinite;
+        transition: 3s ease-in-out;
+        border-radius: 10px;
+        opacity: 1;
+        border: 2px solid red;
+    }
+    
+    .bhm:hover::before{
+        opacity: 1;
+    }
+   /*  .bhm:active:after{
+        background: transparent;
+    }
+   .bhm:active{
+        color:#000;
+        font-weight: bold;
+    }*/
+
+    
+</style>
+<body>
+
+   <form  method="POST" class="bhm">
+    {% csrf_token %}
+    <label for="username" class="form-label text-dark" style="font-size: 25px; font-family:Georgia, 'Times New Roman', Times, serif; font-weight:700; letter-spacing:1px;">Useremail:</label>
+    <input type="emial" class="form-control" name="username" placeholder="Enter the email..." required>
+    <label for="password" class="form-label mt-4 text-dark" style="font-size: 25px; font-family:Georgia, 'Times New Roman', Times, serif; font-weight:700; letter-spacing:1px;">Password:</label>
+    <input type="password" class="form-control" name="password" placeholder="Enter the password..." required> <br>
+    <button type="submit">
+        <span>Login</span> <i></i>
+    </button>
+    <button class="ms-4">
+        <span><a href="{% url 'register'%}" style="text-decoration:none; color:black;">Register</a></span> <i></i>
+    </button>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
